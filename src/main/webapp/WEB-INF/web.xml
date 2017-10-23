@@ -3,13 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <!--servlet注册-->
     <servlet>
         <servlet-name>web</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
-    
+
+    <!--servlet映射-->
     <servlet-mapping>
         <servlet-name>web</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/</url-pattern><!-- 某一个路径来访问当前servlet    /：就表示过滤所有的请求    而/* : 也表示过滤所有的请求适用于过滤编码过滤器的-->
     </servlet-mapping>
+    
+    <!-- default servlet mapping -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- spring ContextLoaderListener Registry -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
 </web-app>
