@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS db_test.user;
 CREATE TABLE db_test.user(
   id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'PK',
   username VARCHAR(255) NOT NULL UNIQUE COMMENT '用户名',
-  password VARCHAR(255) NOT NULL COMMENT '密码',
-  lastTime DATETIME COMMENT '登录时间'
+  password VARCHAR(255) NOT NULL COMMENT '密码'
+#   lastTime DATETIME COMMENT '登录时间'
 )COMMENT '用户表';
 
 # book table
