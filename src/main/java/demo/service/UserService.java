@@ -1,6 +1,5 @@
 package demo.service;
 
-import demo.mapper.UserMapper;
 import demo.model.User;
 import demo.util.MyBatisSqlSession;
 import org.apache.ibatis.session.SqlSession;
@@ -14,40 +13,44 @@ import java.util.List;
  */
 public class UserService {
 
-    private InterfaceTest interfaceTest;
+    private UserDao userDao;
 
-    public void setInterfaceTest(InterfaceTest interfaceTest) {
-        this.interfaceTest = interfaceTest;
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
-    private static int createUser(){
-        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
-            return sqlSession.insert("user.create",new User(null, "Jerry1", "123"));
-        }
+    public  int createUser(User user){
+//        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
+//            return sqlSession.insert("user.create",new User(null, "Jerry1", "123"));
+        return userDao.createUser(user);
     }
 
-    private static int updateUser(){
-        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
-            return sqlSession.update("user.update", new User(1,"tester","test"));
-        }
+    public int updateUser(User user){
+//        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
+//            return sqlSession.update("user.update", new User(1,"tester","test"));
+//        }
+        return userDao.updateUser(user);
     }
 
-    private static int deleteUser(){
-        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
-            return sqlSession.delete("user.delete",1);
-        }
+    public int deleteUser(User user){
+//        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
+//            return sqlSession.delete("user.delete",1);
+//        }
+        return userDao.deleteUser(user);
     }
 
-    private static List<User> queryAll(){//查询与事务无关，所以可以用false
-        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(false)){
-            return sqlSession.selectList("user.queryAll");
-        }
+    public List<User> queryAll(){//查询与事务无关，所以可以用false
+//        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(false)){
+//            return sqlSession.selectList("user.queryAll");
+//        }
+        return userDao.queryAll();
     }
 
-    private static User queryById(){
-        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(false)){
-            return sqlSession.selectOne("user.queryById",33);
-        }
+    public User queryById(int id){
+//        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(false)){
+//            return sqlSession.selectOne("user.queryById",33);
+//        }
+        return userDao.queryById(id);
     }
 
     //不推荐使用接口的方式
@@ -62,11 +65,10 @@ public class UserService {
 //        System.out.println(createUser());
 //        System.out.println(createUser());
 //        System.out.println(updateUser());
-        List<User> users = queryAll();
-        for (User user : users) {
-            System.out.println(user);
-        }
-
-        System.out.println(queryById());
+//        List<User> users = queryAll();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
+//        System.out.println(queryById());
     }
 }

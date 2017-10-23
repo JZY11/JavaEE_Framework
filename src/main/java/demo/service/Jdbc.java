@@ -14,7 +14,7 @@ import java.util.List;
  * on 2017/10/23.
  * JavaEE_Framework.
  */
-public class Jdbc implements InterfaceTest {
+public class Jdbc implements UserDao {
     @Override
     public int createUser(User user) {
         System.out.println("进来了");

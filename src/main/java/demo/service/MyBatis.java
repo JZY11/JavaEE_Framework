@@ -11,7 +11,7 @@ import java.util.List;
  * on 2017/10/23.
  * JavaEE_Framework.
  */
-public class MyBatis implements InterfaceTest {
+public class MyBatis implements UserDao {
     @Override
     public int createUser(User user) {
         try (SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)) {

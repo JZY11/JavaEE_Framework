@@ -9,7 +9,7 @@ import java.util.List;
  * on 2017/10/23.
  * JavaEE_Framework.
  */
-public interface InterfaceTest {
+public interface UserDao {
     int createUser(User user);
     int updateUser(User user);
     int deleteUser(User user);
