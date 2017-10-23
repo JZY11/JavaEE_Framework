@@ -1,0 +1,80 @@
+DROP DATABASE IF EXISTS db_test;
+CREATE DATABASE db_test;
+
+# user table
+DROP TABLE IF EXISTS db_test.user;
+CREATE TABLE db_test.user(
+  id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'PK',
+  username VARCHAR(255) NOT NULL UNIQUE COMMENT '用户名',
+  password VARCHAR(255) NOT NULL COMMENT '密码',
+  lastTime DATETIME COMMENT '登录时间'
+)COMMENT '用户表';
+
+# book table
+DROP TABLE IF EXISTS db_test.book;
+CREATE TABLE db_test.book(
+  id int AUTO_INCREMENT PRIMARY KEY COMMENT 'PK',
+  title VARCHAR(255) NOT NULL COMMENT '书名',
+  author VARCHAR(255) NOT NULL COMMENT '作者',
+  date DATE NOT NULL COMMENT '日期',
+  price DECIMAL(6,2) NOT NULL COMMENT '定价'
+)COMMENT '图书表';
+
+# student table
+DROP TABLE IF EXISTS db_test.student;
+CREATE TABLE db_test.student(
+  id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'PK',
+  name VARCHAR(255) NOT NULL UNIQUE COMMENT '姓名',
+  age INT COMMENT '年龄',
+  height DOUBLE COMMENT '身高',
+  married VARCHAR(255) COMMENT '婚否'
+)COMMENT '学生表';
+
+# demo table
+DROP TABLE IF EXISTS db_test.demo;
+CREATE TABLE db_test.demo(
+  id int AUTO_INCREMENT PRIMARY KEY COMMENT 'PK',
+  name VARCHAR(255) NOT NULL COMMENT '姓名'
+)COMMENT '测试表';
+
+
+TRUNCATE TABLE db_test.user;
+
+SELECT *
+FROM db_test.user;
+
+SELECT *
+FROM db_test.book;
+
+SELECT *
+FROM db_test.user
+WHERE username = '' AND password = '';
+
+SELECT password
+FROM db_test.user
+WHERE username = '';
+
+SELECT *
+FROM db_test.student;
+
+SELECT *
+FROM db_test.demo;
+
+INSERT INTO db_test.book VALUES (NULL ,'title.....','author....','2017-01-01','123.45');
+
+SELECT *
+FROM db_test.book;
+
+# 每页显示 10 条记录
+# 记录总数
+# 当前页数
+
+
+SELECT count(*)
+FROM db_test.book;
+
+
+SELECT *
+FROM db_test.demo;
+
+INSERT INTO db_test.demo VALUES (NULL, 'name...');
