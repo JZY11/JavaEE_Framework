@@ -1,4 +1,4 @@
-package demo.util;
+package zhenghebuyong;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -18,7 +18,7 @@ public class MyBatisSqlSession {//singleton  单例模式   单一的一个实�
     private static SqlSessionFactory getSqlSessionFactory(){
         if (sqlSessionFactory == null){
             try {
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("zhenghebuyong/mybatis-config.xml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

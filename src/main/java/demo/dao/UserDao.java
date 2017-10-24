@@ -12,5 +12,6 @@ import demo.model.User;
  */
 public interface UserDao {
     void create(User user);
+
     User signIn(User user);
 }

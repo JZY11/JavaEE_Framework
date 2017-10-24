@@ -45,4 +45,9 @@ public class UserController extends BaseController{
         return "/default.jsp";//登录失败
     }
 
+    @RequestMapping("signOut")
+    private String signOut(){
+        session.invalidate();
+        return "redirect:/index.jsp";
+    }
 }
