@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
    //spring MVC 里面我们如何来获取原来的request、response以及一些其他的对象？
  */
 public class BaseController {
+
+    //定义了四个javaEE的对象  类级别私有的default：修饰符
     HttpServletRequest request;
     HttpServletResponse response;
     HttpSession session;

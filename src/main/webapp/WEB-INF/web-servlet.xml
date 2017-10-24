@@ -14,5 +14,5 @@
     <!--注解驱动     采用注解的方式进行bean的注册-->
     <mvc:annotation-driven/>
     <!--组件扫描器-->
-    <context:component-scan base-package="demo.controller"/>
+    <context:component-scan base-package="demo.controller demo.dao.impl"/>
 </beans>

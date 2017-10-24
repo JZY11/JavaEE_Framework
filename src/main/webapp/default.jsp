@@ -11,7 +11,7 @@
     <title>Index page</title>
   </head>
   <body>
-  <h1>index page</h1>
+  <h1>首页</h1>
   <form action="/user/signIn" method="post">
     用户名：<input type="text" name="username"placeholder="USERNAME"><br>
     密码：<input type="text" name="password" placeholder="PASSWORD"><br>

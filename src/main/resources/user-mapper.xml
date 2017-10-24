@@ -30,9 +30,9 @@
         WHERE id = #{id};
     </select>
 
-    <select id="signIn" parameterType="int" resultType="user">
+    <select id="signIn" parameterType="user" resultType="user">
         SELECT *
         FROM db_test.user
-        WHERE id = #{id};
+        WHERE username = #{username} AND password = #{password};
     </select>
 </mapper>
