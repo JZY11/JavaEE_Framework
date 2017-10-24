@@ -18,7 +18,7 @@ public class MyBatisSqlSession {//singleton  单例模式   单一的一个实�
     private static SqlSessionFactory getSqlSessionFactory(){
         if (sqlSessionFactory == null){
             try {
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config"));
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

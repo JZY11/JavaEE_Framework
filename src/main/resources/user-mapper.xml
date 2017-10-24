@@ -29,4 +29,10 @@
         FROM db_test.user
         WHERE id = #{id};
     </select>
+
+    <select id="signIn" parameterType="int" resultType="user">
+        SELECT *
+        FROM db_test.user
+        WHERE id = #{id};
+    </select>
 </mapper>
