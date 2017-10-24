@@ -11,7 +11,7 @@
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--注解驱动-->
+    <!--注解驱动     采用注解的方式进行bean的注册-->
     <mvc:annotation-driven/>
     <!--组件扫描器-->
     <context:component-scan base-package="demo.controller"/>

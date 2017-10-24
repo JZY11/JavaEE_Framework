@@ -1,6 +1,8 @@
 package demo.controller;
 
 import demo.model.User;
+import demo.util.MyBatisSqlSession;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 
-    @RequestMapping("create")
+    @RequestMapping("create")    //方法级别的注解
     private  String create(User user){
         //todo   将来是MyBatis来做，将数据存入数据库
-        System.out.println("create.....");
-        return "redirect:/index.jsp";//重定向到index.jsp
+        try(SqlSession sqlSession = MyBatisSqlSession.getSqlSession(true)){
+            sqlSession.insert("user.create",user);
+        }
+        System.out.println("user:" + user);
+        return "redirect:/default.jsp";//重定向到index.jsp
     }
 }
