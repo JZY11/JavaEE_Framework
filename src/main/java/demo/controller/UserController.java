@@ -35,7 +35,7 @@ public class UserController extends BaseController{
 
     @RequestMapping("signIn")
     private String signIn(User user){
-        user = userDao.signIn(user);
+        user = userDao.query(user);
         if (user != null){
             session.setAttribute("user", user);
             return "redirect:/book/queryAll";

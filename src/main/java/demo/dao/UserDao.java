@@ -10,8 +10,8 @@ import demo.model.User;
 /*
    用来实现松散耦合，就是将控制器类中的关于MyBatis的东西去掉
  */
-public interface UserDao {
-    void create(User user);
-
-    User signIn(User user);
+public interface UserDao extends GenericDao<User>{
+//    void create(User user);
+//
+//    User query(User user);//SQL语句    select   由signIn改为query
 }

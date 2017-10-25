@@ -20,7 +20,7 @@
     <input type="text" name="author" placeholder="作者" value="${sessionScope.book.author}"><br>
     <input type="date" name="date" placeholder="出版日期" value="${sessionScope.book.date}"><br>
     <input type="text" name="price" placeholder="定价" value="${sessionScope.book.price}"><br>
-    <input type="submit" value="保存"><br>
+    <input type="submit" value="保存">
   </form>
   </body>
 </html>

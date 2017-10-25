@@ -10,6 +10,11 @@
 <html>
   <head>
     <title>主页</title>
+    <script>
+        function del() {
+            alert("您确定要删除吗？")
+        }
+    </script>
   </head>
   <body>
   <h1>主页</h1>
@@ -40,8 +45,8 @@
        <td>${book.author}</td>
        <td>${book.date}</td>
        <td>${book.price}</td>
-       <td><a href="/book/queryBookById/${book.id}">编辑</a></td>
-       <td><a href="/book/">删除</a></td>
+       <td><a href="/book/queryById/${book.id}">编辑</a></td>
+       <td><a href="/book/remove/${book.id}" onclick="return del()">删除</a></td>
     </tr>
   </c:forEach>
 </table>

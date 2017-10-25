@@ -25,17 +25,27 @@ public class BookDaoImpl implements BookDao{
     }
 
     @Override
+    public Book query(Book book) {
+        return null;
+    }
+
+    @Override
     public List<Book> queryAll() {
         return sqlSession.selectList("book.queryAll");
     }
 
     @Override
-    public Book queryBookById(int id) {
-        return sqlSession.selectOne("book.queryBookById",id);
+    public Book queryById(int id) {
+        return sqlSession.selectOne("book.queryById",id);
     }
 
     @Override
     public void modify(Book book) {
         sqlSession.update("book.modify",book);
+    }
+
+    @Override
+    public void remove(int id) {
+        sqlSession.delete("book.remove",id);
     }
 }

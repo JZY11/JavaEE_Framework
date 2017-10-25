@@ -31,9 +31,9 @@ public class BookController extends BaseController {
         return "redirect:/index.jsp";
     }
 
-    @RequestMapping("queryBookById/{id}")
-    private String queryBookById(@PathVariable int id){//参数级别的注解：@PathVariable
-        session.setAttribute("books",bookDao.queryBookById(id));
+    @RequestMapping("queryById/{id}")
+    private String queryById(@PathVariable int id){//参数级别的注解：@PathVariable
+        session.setAttribute("books",bookDao.queryById(id));
         return "redirect:/edit.jsp";
     }
 
@@ -41,6 +41,12 @@ public class BookController extends BaseController {
     private String modify(Book book){
         System.out.println("..........");
         bookDao.modify(book);
+        return "redirect:/book/queryAll";
+    }
+
+    @RequestMapping("remove/{id}")
+    private String remove(@PathVariable int id){
+        bookDao.remove(id);
         return "redirect:/book/queryAll";
     }
 }
