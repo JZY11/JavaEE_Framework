@@ -2,6 +2,7 @@ package demo.controller;
 
 import demo.dao.UserDao;
 import demo.model.User;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,8 @@ public class UserController extends BaseController{
     @RequestMapping("create")    //方法级别的注解
     private  String create(User user){
         //todo   将来是MyBatis来做，将数据存入数据库
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        user.setPassword(encryptor.encryptPassword(user.getPassword()));
         userDao.create(user);
         System.out.println("user:" + user);
         return "redirect:/default.jsp";//重定向到index.jsp
@@ -35,8 +38,13 @@ public class UserController extends BaseController{
 
     @RequestMapping("signIn")
     private String signIn(User user){
-        user = userDao.query(user);
-        if (user != null){
+        String plainPassword = user.getPassword();
+        System.out.println(plainPassword);
+        user = userDao.query("queryPasswordByUsername", user.getUsername());
+        String encryptedPassword = user.getPassword();
+        System.out.println(encryptedPassword);
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        if (encryptor.checkPassword(plainPassword,encryptedPassword)) {
             session.setAttribute("user", user);
             return "redirect:/book/queryAll";
         }
