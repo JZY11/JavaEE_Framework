@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by zhenya.1291813139.com
  * on 2017/10/25.
@@ -20,5 +22,20 @@ public class BookDaoImpl implements BookDao{
     @Override
     public void create(Book book) {
         sqlSession.insert("book.create",book);
+    }
+
+    @Override
+    public List<Book> queryAll() {
+        return sqlSession.selectList("book.queryAll");
+    }
+
+    @Override
+    public Book queryBookById(int id) {
+        return sqlSession.selectOne("book.queryBookById",id);
+    }
+
+    @Override
+    public void modify(Book book) {
+        sqlSession.update("book.modify",book);
     }
 }

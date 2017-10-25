@@ -38,7 +38,7 @@ public class UserController extends BaseController{
         user = userDao.signIn(user);
         if (user != null){
             session.setAttribute("user", user);
-            return "redirect:/index.jsp";
+            return "redirect:/book/queryAll";
         }
         //以前登录失败的做法：req.setAttribute("message","用户名或者密码错误");
         request.setAttribute("message", "用户名或者密码错误");

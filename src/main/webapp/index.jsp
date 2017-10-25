@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     <title>主页</title>
@@ -22,5 +23,27 @@
     <input type="text" name="price" placeholder="定价"><br>
     <input type="submit" value="ADD A BOOK"><br>
   </form>
+  <hr>
+<table border="1">
+    <tr>
+        <th>序号</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>出版时间</th>
+        <th>定价</th>
+        <th colspan="2">操作</th>
+    </tr>
+  <c:forEach var="book" items="${sessionScope.books}" varStatus="vs">
+    <tr>
+       <td>${vs.count}</td>
+       <td>${book.title}</td>
+       <td>${book.author}</td>
+       <td>${book.date}</td>
+       <td>${book.price}</td>
+       <td><a href="/book/queryBookById/${book.id}">编辑</a></td>
+       <td><a href="/book/">删除</a></td>
+    </tr>
+  </c:forEach>
+</table>
   </body>
 </html>
